@@ -1,0 +1,19 @@
+{
+    "with_distrib":     false,
+    "_comment":         " model parameters",
+    "ngpu":              1,
+    "lr":                0.001,
+    "batchSize":         16,
+    "modelRoot":         "result",
+    "dataRoot":          "",
+    "labelFile":         "labels5722724-0.5-2.0-0.1.in",
+    "matFile":           "sequences5722724-0.5-2.0-0.1.in",
+    "nTrainSamples":      9500,
+    "nTestSamples":       500,
+    "_comment":         "that's all",
+    "nEpochs":           1200,
+    "gamma":             0.98,
+    "lrSteps":           10,
+    "summaryFile":      "test.out"
+}
+
