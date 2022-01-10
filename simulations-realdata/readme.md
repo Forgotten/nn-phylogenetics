@@ -5,13 +5,13 @@ This folder contains the scripts and code for the simulations and real data anal
 The folder structure is as follows:
 
 - `scripts` contains the julia functions to simulate protein alignments:
-       - `functions-zou2019.jl`: all necessary julia functions
-       - `simulate-zou2019.jl`: simulating script for one specific scenario (see Usage below)
-       - `MCaa.dat`: PAML control file needed for the simulation of protein sequences
-       - `SeedUsed`: seed used in PAML
-       - `ancestral.txt`: ancestral sequences generated during PAML simulation
-       - `evolver`: PAML executable to simulate sequences
-       - `evolver.out`: empty file produced by PAML
+   - `functions-zou2019.jl`: all necessary julia functions
+   - `simulate-zou2019.jl`: simulating script for one specific scenario (see Usage below)
+   - `MCaa.dat`: PAML control file needed for the simulation of protein sequences
+   - `SeedUsed`: seed used in PAML
+   - `ancestral.txt`: ancestral sequences generated during PAML simulation
+   - `evolver`: PAML executable to simulate sequences
+   - `evolver.out`: empty file produced by PAML
 - `notebook.md` contains the reproducible script with all detailed description of steps for the simulation of data, comparison to standard phylogenetic methods and real data analysis. For a fast summary of the scripts to run yourself, check out Usage below.
 
 
