@@ -4,14 +4,18 @@ This folder contains the scripts and code for the simulations and real data anal
 
 The folder structure is as follows:
 
-- `scripts` contains the julia functions to simulate protein alignments:
-   - `functions-zou2019.jl`: all necessary julia functions
-   - `simulate-zou2019.jl`: simulating script for one specific scenario (see Usage below)
-   - `MCaa.dat`: PAML control file needed for the simulation of protein sequences
-   - `SeedUsed`: seed used in PAML
-   - `ancestral.txt`: ancestral sequences generated during PAML simulation
-   - `evolver`: PAML executable to simulate sequences
-   - `evolver.out`: empty file produced by PAML
+- `scripts` contains the julia functions to simulate protein alignments and to fit our NN model on the Zika data:
+   - `simulations`:
+      - `functions-zou2019.jl`: all necessary julia functions
+      - `simulate-zou2019.jl`: simulating script for one specific scenario (see Usage below)
+      - `MCaa.dat`: PAML control file needed for the simulation of protein sequences
+      - `SeedUsed`: seed used in PAML
+      - `ancestral.txt`: ancestral sequences generated during PAML simulation
+      - `evolver`: PAML executable to simulate sequences
+      - `evolver.out`: empty file produced by PAML
+   - `real_data`: 
+      - `Real_Data_Test.ipynb`: python notebook with the code to predict the quartet for a given 4-taxon sequence dataset
+      - `resultsaved_TrainOptLSTM_trainoptlstm_lr_0.001_batch_16_lba_best.pth`: XXXX
 - `notebook.md` contains the reproducible script with all detailed description of steps for the simulation of data, comparison to standard phylogenetic methods and real data analysis. For a fast summary of the scripts to run yourself, check out Usage below.
 
 
@@ -308,5 +312,5 @@ The 7th taxon (see `FASTA.fa`) is "BBA85762, 3423, Homo sapiens, Japan, 2016" wh
 
 #### 3. Quartet puzzling
 
-After NN model has been run (see XXXX), we can do the quartet puzzling step with Quartet Max Cut. It needs an input file that is one line with each quartet separated by a space in the form of a split: "1,2|3,4".
+After NN model has been run (see the `real_data` folder), we can do the quartet puzzling step with Quartet Max Cut. It needs an input file that is one line with each quartet separated by a space in the form of a split: "1,2|3,4".
 See `../plots/final_plots.Rmd` for the quartet stitching and the plot of the tree.
