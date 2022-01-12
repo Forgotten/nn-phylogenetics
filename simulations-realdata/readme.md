@@ -15,7 +15,7 @@ The folder structure is as follows:
       - `evolver.out`: empty file produced by PAML
    - `real_data`: 
       - `Real_Data_Test.ipynb`: python notebook with the code to predict the quartet for a given 4-taxon sequence dataset
-      - `resultsaved_TrainOptLSTM_trainoptlstm_lr_0.001_batch_16_lba_best.pth`: .path file with the best path of the model created by the OptLSTM training process
+      - `resultsaved_TrainOptLSTM_trainoptlstm_lr_0.001_batch_16_lba_best.pth`: .pth file with the best path of the model created by the OptLSTM training process
 - `notebook.md` contains the reproducible script with all detailed description of steps for the simulation of data, comparison to standard phylogenetic methods and real data analysis. For a fast summary of the scripts to run yourself, check out Usage below.
 
 
