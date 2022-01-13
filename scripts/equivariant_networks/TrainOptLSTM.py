@@ -224,6 +224,7 @@ class _Model(torch.nn.Module):
         self.descriptor_model = DescriptorModule(20, embeding_dim)
         self.hidden_dim = hidden_dim
         self.output_size = output_size
+        self.embeding_dim = embeding_dim
 
         # we define the required elements for \Psi
         self.classifier = torch.nn.Linear(self.output_size, 1)

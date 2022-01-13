@@ -4,7 +4,7 @@
     "ngpu":              1,
     "lr":                0.001,
     "batchSize":         16,
-    "modelRoot":         "1300",
+    "modelRoot":         "composite_data_",
     "dataRoot":          "",
     "labelFile":         "labelsdata.in",
     "matFile":           "sequencedata.in",
