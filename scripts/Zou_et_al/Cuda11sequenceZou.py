@@ -31,8 +31,8 @@ batch_size = dataJson["batchSize"]       # batch size
 dataRoot = dataJson["dataRoot"]          # data folder
 modelRoot = dataJson["modelRoot"]        # folder to save the data
 
-labelFiles = dataJson["labelFile"]        # file with labels
-sequenceFiles = dataJson["matFile"]            # file with sequences
+labelFiles = dataJson["labelFile"]       # file with labels
+sequenceFiles = dataJson["matFile"]      # file with sequences
 
 n_train_samples = dataJson["nTrainSamples"]
 n_test_samples = dataJson["nTestSamples"]
@@ -126,12 +126,13 @@ inputTrain  = torch.Tensor(sequences[0:n_train_samples, :, :])
 datasetTrain = data.TensorDataset(inputTrain, outputTrain)
 
 outputTest = torch.tensor(labels[-n_test_samples:])
-print(outputTest.size())
 inputTest  = torch.Tensor(sequences[-n_test_samples:, :, :])
-print(inputTest.size())
-datasetTest = data.TensorDataset(inputTest, outputTest)
-class _Permutation():
 
+datasetTest = data.TensorDataset(inputTest, outputTest)
+
+
+class _Permutation():
+    """Class to store the different permutations"""
     def __init__(self):
 
         self.permData = np.asarray(list(itertools.permutations(range(4))))
@@ -172,7 +173,7 @@ class _Permutation():
 
 
 class _Collate():
-
+    """Class to collate the permuted data"""
     def __init__(self):
         self.perm = _Permutation()
 
@@ -203,12 +204,11 @@ class _Collate():
 
 
 ##############################################################
-# We specify the networks (this are quite simple, we should be
-# able to build some more complex)
+#           Building the networks                           #
+##############################################################
 
 
-## copy paste from the Zou 2019 model
-# here is the residue block
+## This is from Zou et al. Extracted from the repository
 class _ResidueModule(torch.nn.Module):
 
     def __init__(self, channel_count):
@@ -225,10 +225,8 @@ class _ResidueModule(torch.nn.Module):
     def forward(self, x):
         return x + self.layers(x)
 
-
 class _Model(torch.nn.Module):
     """A neural network model to predict phylogenetic trees."""
-
     def __init__(self):
         """Create a neural network model."""
         super().__init__()

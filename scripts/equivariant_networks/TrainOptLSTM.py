@@ -250,27 +250,27 @@ class _Model(torch.nn.Module):
         g =  self.descriptor_model(x)
         
         # we reshape the output tensor
-        X =  g.view(4*batch_size, self.embedding_dim, -1)
+        X =  g.view(3*batch_size, self.embedding_dim, -1)
 
-        # (none*4, 1550, hidden_dim)
+        # (none*3, 1550, hidden_dim)
         r_output, hidden = self.rnn(X.permute([0, 2, 1]))
 
         # extracting only the last in the sequence
-        # (none*4, hidden_dim)
+        # (none*3, hidden_dim)
         r_output_last = r_output[:, -1, :] 
 
         # not sure if this helps
         out = r_output_last.contiguous().view(-1, self.hidden_dim)
         
-        # (none*4, out_put_dimensions)
+        # (none*3, out_put_dimensions)
         output = self.fc(out)
 
         X_combined = self.classifier(output) 
         # (3*none, 1)
 
-        X_combined = X_combined.view(batch_size, 4)
+        X_combined = X_combined.view(batch_size, 3)
 
-        return torch.permute(X_combined, [1, 0])
+        return X_combined
 
 
 # checking the device
@@ -368,7 +368,7 @@ for epoch in range(1, n_epochs + 1):
         train_loss += loss.item()
 
     trainEpoch.append(epoch)
-    trainLoss.appedn(train_loss)
+    trainLoss.append(train_loss)
 
     end = time.time()
 
@@ -432,8 +432,6 @@ for epoch in range(1, n_epochs + 1):
 
             # calculate the loss
             loss = criterion(quartetsNN, quartets_batch)
-            # backward pass: compute gradient of the loss with respect to model parameters
-            loss.backward()
 
             # perform a single optimization step (parameter update)
             optimizer.step()
@@ -442,8 +440,8 @@ for epoch in range(1, n_epochs + 1):
             total += quartets_batch.size(0)
             correct += (predicted == quartets_batch).sum().item()
 
-        test_epoch.apppend(epoch)
-        test_loss_array.apppend(test_loss)
+        test_epoch.append(epoch)
+        test_loss_array.append(test_loss)
 
         end = time.time()
         accuracy_test = correct/total
