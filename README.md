@@ -2,14 +2,14 @@
 
 - Claudia Solis-Lemus
 - Shengwen Yang
-- Leonardo Zepeda-Nunez
+- Leonardo Zepeda-Núñez
 
 This repository contains the scripts, data, and plots for the paper:
 
 ```
 @misc{phylo-nn,
       title={Accurate Phylogenetic Inference with a Symmetry-preserving Neural Network Model}, 
-      author={Claudia Solis-Lemus, Shengwen Yang, Leonardo Zepeda-Nunez},
+      author={Claudia Solis-Lemus, Shengwen Yang, Leonardo Zepeda-Núñez},
       year={2022},
       eprint={xxxx},
       archivePrefix={arXiv}
