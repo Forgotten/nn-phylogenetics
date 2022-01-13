@@ -157,7 +157,7 @@ class DescriptorModule(torch.nn.Module):
         self.embedding_layer = nn.Embedding(length_dict, embeding_dim)
         self._res_module_1 = ResNetModule(embeding_dim)
         self._res_module_2 = ResNetModule(embeding_dim)
-
+        self.embeding_dim = embeding_dim
 
     def forward(self, x):
         # (none, 4, 1550)
