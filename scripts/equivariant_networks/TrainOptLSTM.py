@@ -151,13 +151,13 @@ class DescriptorModule(torch.nn.Module):
     in a unified manner, D_I, D_{II}, and D_{III}.
     '''
 
-    def __init__(self, length_dict, embeding_dim, trunc_length = 1550):
+    def __init__(self, length_dict, embedding_dim, trunc_length = 1550):
         super().__init__()
         
-        self.embedding_layer = nn.Embedding(length_dict, embeding_dim)
-        self._res_module_1 = ResNetModule(embeding_dim)
-        self._res_module_2 = ResNetModule(embeding_dim)
-        self.embeding_dim = embeding_dim
+        self.embedding_layer = nn.Embedding(length_dict, embedding_dim)
+        self._res_module_1 = ResNetModule(embedding_dim)
+        self._res_module_2 = ResNetModule(embedding_dim)
+        self.embedding_dim = embedding_dim
 
     def forward(self, x):
         # (none, 4, 1550)
@@ -206,7 +206,7 @@ class DescriptorModule(torch.nn.Module):
         x = torch.cat([torch.unsqueeze(D_1,1), 
                        torch.unsqueeze(D_2,1), 
                        torch.unsqueeze(D_3,1)], dim = 1)
-        # (none, 3, embeding_dim, 1550)
+        # (none, 3, embedding_dim, 1550)
 
         return x
 
@@ -214,21 +214,21 @@ class DescriptorModule(torch.nn.Module):
 class _Model(torch.nn.Module):
     """A neural network model to predict phylogenetic trees."""
 
-    def __init__(self, embeding_dim = 80, hidden_dim = 20, 
+    def __init__(self, embedding_dim = 80, hidden_dim = 20, 
                       num_layers = 3, output_size = 20, 
                       dropout = 0.0):
         """Create a neural network model."""
         super().__init__()
 
 
-        self.descriptor_model = DescriptorModule(20, embeding_dim)
+        self.descriptor_model = DescriptorModule(20, embedding_dim)
         self.hidden_dim = hidden_dim
         self.output_size = output_size
-        self.embeding_dim = embeding_dim
+        self.embedding_dim = embedding_dim
 
         # we define the required elements for \Psi
         self.classifier = torch.nn.Linear(self.output_size, 1)
-        self.rnn = nn.LSTM(embeding_dim, hidden_dim, 
+        self.rnn = nn.LSTM(embedding_dim, hidden_dim, 
                            num_layers, dropout=dropout,
                            batch_first=True)
         self.fc = torch.nn.Linear(hidden_dim, self.output_size)
