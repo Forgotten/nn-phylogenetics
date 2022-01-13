@@ -15,8 +15,6 @@ import time
 from os import path
 sys.path.insert(0, '../')
 
-from utilities import SequenceDataSet
-
 import gc
 
 gc.collect()
