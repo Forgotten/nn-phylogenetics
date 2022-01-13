@@ -270,6 +270,7 @@ class _Model(torch.nn.Module):
 
 ###############################################
 
+# cunstom 
 collate_fc = _Collate()
 
 dataloaderTrain = torch.utils.data.DataLoader(datasetTrain,
@@ -363,6 +364,7 @@ for epoch in range(1, nEpochs + 1):
                                 1, 2, 0, 0,
                                 2, 1, 0, 0,
                                 1, 2, 1, 2 ], dtype = torch.long)
+
         for genes, quartets_batch in dataloaderTest:
             # send to the device (either cpu or gpu)
             genes, quartets_batch = genes.to(device), quartets_batch.to(device)
@@ -388,26 +390,17 @@ for epoch in range(1, nEpochs + 1):
               if(truelabel == predictlabel):
                 correct +=1          
               total += 1
-            #print(genes.size())
-            #print(quartets_batch.size())
-            #print(quartetsNN.size())
-            #total += quartets_batch.size(0)
-            #correct += (predicted == quartets_batch).sum().item()
 
         accuracyTest = correct / total
-        #print(genes)
-        #print(quartets_batch)
-        #print(predicted)
-        #print(predicted.size())
-        #print(quartets_batch.size())
-        print(intruth)
-        print(inpred)
-        print(predictarray)
-        print(truelabel)
-        print(predictlabel)
-        print(total)
-        print(correct)
-        #print(len(dataloaderTest))
+
+        # print(intruth)
+        # print(inpred)
+        # print(predictarray)
+        # print(truelabel)
+        # print(predictlabel)
+        # print(total)
+        # print(correct)
+
         print('Epoch: {} \tTest accuracy: {:.6f}'.format(epoch,
                                                          accuracyTest))
         if accuracyTest > maxAccuracy:
