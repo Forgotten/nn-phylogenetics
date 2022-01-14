@@ -7,12 +7,13 @@
 This repository contains the scripts, data, and plots for the paper:
 
 ```
-@misc{phylo-nn,
+@misc{solislemus2022accurate,
       title={Accurate Phylogenetic Inference with a Symmetry-preserving Neural Network Model}, 
-      author={Claudia Solis-Lemus, Shengwen Yang, Leonardo Zepeda-Núñez},
+      author={Claudia Solis-Lemus and Shengwen Yang and Leonardo Zepeda-Nunez},
       year={2022},
-      eprint={xxxx},
-      archivePrefix={arXiv}
+      eprint={2201.04663},
+      archivePrefix={arXiv},
+      primaryClass={q-bio.PE}
 }
 ```
 
