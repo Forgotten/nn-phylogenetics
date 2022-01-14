@@ -65,7 +65,6 @@ with open(dataRoot+sequenceFiles, 'r') as f:
 
 # extracting the number of samples
 n_samples = len(label_char)
-print(n_samples)
 # extracting the sequence lenghth
 seq_lenghth = len(seq_string[0])-1
 
@@ -329,7 +328,6 @@ for epoch in range(1, nEpochs + 1):
 
     # print avg training statistics
     train_loss = train_loss / len(dataloaderTrain)
-    print(len(dataloaderTrain))
     print('Epoch: {} \tTraining Loss: {:.6f}'.format(
         epoch,
         train_loss
@@ -393,13 +391,6 @@ for epoch in range(1, nEpochs + 1):
 
         accuracyTest = correct / total
 
-        # print(intruth)
-        # print(inpred)
-        # print(predictarray)
-        # print(truelabel)
-        # print(predictlabel)
-        # print(total)
-        # print(correct)
 
         print('Epoch: {} \tTest accuracy: {:.6f}'.format(epoch,
                                                          accuracyTest))
