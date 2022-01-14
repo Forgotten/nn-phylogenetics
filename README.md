@@ -4,7 +4,7 @@
 - Shengwen Yang
 - Leonardo Zepeda-Núñez
 
-This repository contains the scripts, data, and plots for the paper:
+This repository contains the scripts, data, and plots for [the paper](https://arxiv.org/abs/2201.04663):
 
 ```
 @misc{solislemus2022accurate,
